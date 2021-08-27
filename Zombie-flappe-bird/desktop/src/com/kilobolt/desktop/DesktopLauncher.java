@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		config.title = "Zommbe flappee bird";
 		config.width = 1080 / 3;
 		config.height = 1920 / 3;
+		config.forceExit = false;
 		new LwjglApplication(new ZBGame(), config);
 	}
 }
