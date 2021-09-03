@@ -3,11 +3,18 @@ package com.kilobolt.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.kilobolt.gameworld.GameRenderer;
+import com.kilobolt.gameworld.GameWorld;
 
 public class GameScreen implements Screen {
 
+    private GameWorld world;
+    private GameRenderer renderer;
+
     public GameScreen() {
         Gdx.app.log("GameScreen", "Attached");
+        world = new GameWorld();
+        renderer = new GameRenderer(world);
     }
 
     @Override
@@ -23,6 +30,9 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // Covert Frame rate to String, print it
         Gdx.app.log("GameScreen FPS", (1/delta) + "");
+
+        world.update(delta);
+        renderer.render();
     }
 
     @Override
